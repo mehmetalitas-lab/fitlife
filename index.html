@@ -1,0 +1,2903 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Studio - Transform Your Body, Transform Your Life</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== CSS RESET & GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme variables */
+            --primary-color: #4a90e2;
+            --secondary-color: #50c878;
+            --accent-color: #ff6b6b;
+            --text-color: #333333;
+            --text-light: #666666;
+            --bg-color: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --gradient: linear-gradient(135deg, #4a90e2, #50c878);
+            --gradient-secondary: linear-gradient(135deg, #ff6b6b, #ffa36c);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme variables */
+            --primary-color: #5da2ff;
+            --secondary-color: #6ddb96;
+            --accent-color: #ff8585;
+            --text-color: #f0f0f0;
+            --text-light: #b0b0b0;
+            --bg-color: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #2d2d2d;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --gradient: linear-gradient(135deg, #5da2ff, #6ddb96);
+            --gradient-secondary: linear-gradient(135deg, #ff8585, #ffb585);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-light {
+            background-color: var(--bg-secondary);
+        }
+
+        .section-dark {
+            background-color: var(--bg-tertiary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-5 {
+            margin-bottom: 3rem;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+
+        .theme-toggle,
+        .lang-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+            color: var(--text-color);
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover,
+        .lang-toggle:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .trainers {
+            margin-top: 80px;
+        }
+
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .trainer-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .trainer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .trainer-img {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .trainer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .trainer-card:hover .trainer-img img {
+            transform: scale(1.1);
+        }
+
+        .trainer-info {
+            padding: 25px;
+        }
+
+        .trainer-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .specialty {
+            background: var(--bg-secondary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== PROGRAMS SECTION ===== */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .program-header {
+            padding: 25px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .program-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .program-body {
+            padding: 25px;
+        }
+
+        .program-features {
+            margin: 20px 0;
+        }
+
+        .program-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .program-feature i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .program-stats {
+            margin-top: 20px;
+        }
+
+        .stat-bar {
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .stat-progress {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .stat-progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* ===== TRANSFORMATIONS SECTION ===== */
+        .transformations-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .before, .after {
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .before img, .after img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .before-label, .after-label {
+            position: absolute;
+            bottom: 20px;
+            padding: 8px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-weight: 600;
+        }
+
+        .before-label {
+            left: 20px;
+        }
+
+        .after-label {
+            right: 20px;
+        }
+
+        .transformation-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .stats-counter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .counter-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .counter-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        /* ===== NUTRITION SECTION ===== */
+        .nutrition-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .meal-plan {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .meal {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .meal:last-child {
+            border-bottom: none;
+        }
+
+        .meal-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .meal-info {
+            flex: 1;
+        }
+
+        .meal-macros {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .macro {
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            background: var(--bg-secondary);
+        }
+
+        .protein {
+            color: #ff6b6b;
+        }
+
+        .carbs {
+            color: #4a90e2;
+        }
+
+        .fats {
+            color: #ffd166;
+        }
+
+        .calculator {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        .calculator-result {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        /* ===== BLOG SECTION ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.1);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .blog-tag {
+            background: var(--bg-secondary);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .blog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .blog-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 15px;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.5s ease;
+        }
+
+        .blog-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: var(--bg-secondary);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-tertiary);
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-content,
+            .nutrition-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .slide-content {
+                grid-template-columns: 1fr;
+            }
+
+            .before, .after {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--bg-color);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 0 0 20px 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
+            }
+
+            .nav-actions {
+                margin: 20px 0 0 0;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .stats-counter {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .stats-counter {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stat {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- ===== HEADER ===== -->
+<header id="header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span data-i18n="site-name">FitLife Studio</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-i18n="nav.home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#programs" class="nav-link" data-i18n="nav.programs">Programs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#transformations" class="nav-link" data-i18n="nav.transformations">Transformations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#nutrition" class="nav-link" data-i18n="nav.nutrition">Nutrition</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link" data-i18n="nav.blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                </li>
+
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="lang-toggle" id="langToggle">
+                        <span>EN</span>
+                    </button>
+                </div>
+            </ul>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">Transform Your Body, Transform Your Life</h1>
+            <p data-i18n="hero.subtitle">Join thousands of successful clients who have achieved their fitness goals with our personalized training programs and expert guidance.</p>
+            <div class="hero-buttons">
+                <a href="#programs" class="btn" data-i18n="hero.cta1">See Programs</a>
+                <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta2">Online Coaching</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="section" id="about">
+    <div class="container">
+        <h2 data-i18n="about.title">About FitLife Studio</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3 data-i18n="about.subtitle">Your Journey to a Healthier You Starts Here</h3>
+                <p data-i18n="about.text1">At FitLife Studio, we believe that fitness is not just about physical transformation but about building a sustainable, healthy lifestyle. Our team of certified trainers and nutrition experts are dedicated to helping you achieve your goals, whether it's weight loss, muscle gain, or overall wellness.</p>
+                <p data-i18n="about.text2">We combine science-based training methods with personalized nutrition plans to ensure you get the best results in the most efficient way possible. Our holistic approach focuses on strength, endurance, flexibility, and mental wellbeing.</p>
+
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="5000">0</span>
+                        <span class="stat-text" data-i18n="about.stat1">Happy Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="15">0</span>
+                        <span class="stat-text" data-i18n="about.stat2">Expert Trainers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-text" data-i18n="about.stat3">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-image animate-on-scroll">
+                <img src="https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Fitness Training">
+            </div>
+        </div>
+
+        <div class="trainers">
+            <h3 class="text-center mb-5" data-i18n="about.team">Meet Our Expert Team</h3>
+
+            <div class="trainers-grid">
+                <div class="trainer-card animate-on-scroll">
+                    <div class="trainer-img">
+                        <img src="https://images.pexels.com/photos/6456159/pexels-photo-6456159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Trainer Alex">
+                    </div>
+                    <div class="trainer-info">
+                        <h4>Alex Johnson</h4>
+                        <p data-i18n="about.trainer1">Strength & Conditioning Specialist</p>
+                        <div class="trainer-specialties">
+                            <span class="specialty" data-i18n="about.specialty1">Weight Loss</span>
+                            <span class="specialty" data-i18n="about.specialty2">Muscle Building</span>
+                            <span class="specialty" data-i18n="about.specialty3">Functional Training</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trainer-card animate-on-scroll">
+                    <div class="trainer-img">
+                        <img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Trainer Sarah">
+                    </div>
+                    <div class="trainer-info">
+                        <h4>Sarah Williams</h4>
+                        <p data-i18n="about.trainer2">Nutrition & Wellness Coach</p>
+                        <div class="trainer-specialties">
+                            <span class="specialty" data-i18n="about.specialty4">Nutrition Planning</span>
+                            <span class="specialty" data-i18n="about.specialty5">Yoga & Pilates</span>
+                            <span class="specialty" data-i18n="about.specialty6">Mindfulness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trainer-card animate-on-scroll">
+                    <div class="trainer-img">
+                        <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Trainer Mike">
+                    </div>
+                    <div class="trainer-info">
+                        <h4>Mike Rodriguez</h4>
+                        <p data-i18n="about.trainer3">HIIT & Cardio Specialist</p>
+                        <div class="trainer-specialties">
+                            <span class="specialty" data-i18n="about.specialty7">HIIT</span>
+                            <span class="specialty" data-i18n="about.specialty8">Cardio</span>
+                            <span class="specialty" data-i18n="about.specialty9">Endurance Training</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROGRAMS SECTION ===== -->
+<section class="section section-light" id="programs">
+    <div class="container">
+        <h2 data-i18n="programs.title">Our Fitness Programs</h2>
+        <p class="text-center mb-5" data-i18n="programs.subtitle">Choose the program that best fits your goals and lifestyle</p>
+
+        <div class="programs-grid">
+            <div class="program-card animate-on-scroll">
+                <div class="program-header">
+                    <div class="program-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3 data-i18n="programs.program1.title">Weight Loss</h3>
+                </div>
+                <div class="program-body">
+                    <p data-i18n="programs.program1.description">Shed excess fat and improve your health with our comprehensive weight loss program.</p>
+
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program1.feature1">12-week structured plan</span>
+                        </div>
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program1.feature2">Personalized nutrition guide</span>
+                        </div>
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program1.feature3">Weekly progress tracking</span>
+                        </div>
+                    </div>
+
+                    <div class="program-stats">
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program1.stat1">Fat Loss</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program1.stat2">Endurance</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program1.stat3">Strength</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="60"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary w-100 mt-3" data-i18n="programs.cta">Learn More</button>
+                </div>
+            </div>
+
+            <div class="program-card animate-on-scroll">
+                <div class="program-header">
+                    <div class="program-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 data-i18n="programs.program2.title">Muscle Gain</h3>
+                </div>
+                <div class="program-body">
+                    <p data-i18n="programs.program2.description">Build lean muscle mass and increase strength with our targeted hypertrophy program.</p>
+
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program2.feature1">Progressive overload training</span>
+                        </div>
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program2.feature2">High-protein meal plans</span>
+                        </div>
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program2.feature3">Recovery protocols</span>
+                        </div>
+                    </div>
+
+                    <div class="program-stats">
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program2.stat1">Muscle Growth</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program2.stat2">Strength</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program2.stat3">Endurance</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary w-100 mt-3" data-i18n="programs.cta">Learn More</button>
+                </div>
+            </div>
+
+            <div class="program-card animate-on-scroll">
+                <div class="program-header">
+                    <div class="program-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 data-i18n="programs.program3.title">Home Workouts</h3>
+                </div>
+                <div class="program-body">
+                    <p data-i18n="programs.program3.description">Effective workouts you can do anywhere with minimal equipment.</p>
+
+                    <div class="program-features">
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program3.feature1">No equipment needed</span>
+                        </div>
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program3.feature2">30-minute sessions</span>
+                        </div>
+                        <div class="program-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="programs.program3.feature3">Video demonstrations</span>
+                        </div>
+                    </div>
+
+                    <div class="program-stats">
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program3.stat1">Convenience</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program3.stat2">Fat Loss</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="70"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-label">
+                                <span data-i18n="programs.program3.stat3">Strength</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="stat-progress-bar" data-width="60"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary w-100 mt-3" data-i18n="programs.cta">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRANSFORMATIONS SECTION ===== -->
+<section class="section" id="transformations">
+    <div class="container">
+        <h2 data-i18n="transformations.title">Client Transformations</h2>
+        <p class="text-center mb-5" data-i18n="transformations.subtitle">Real results from real people - see what's possible with dedication and the right guidance</p>
+
+        <div class="transformations-slider">
+            <div class="slider-container" id="sliderContainer">
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="before">
+                            <img src="https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Before transformation">
+                            <div class="before-label" data-i18n="transformations.before">Before</div>
+                        </div>
+                        <div class="after">
+                            <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="After transformation">
+                            <div class="after-label" data-i18n="transformations.after">After</div>
+                        </div>
+                    </div>
+                    <div class="transformation-info">
+                        <h3>Mark Johnson</h3>
+                        <p data-i18n="transformations.story1">"I lost 25kg in 6 months with the Weight Loss program. The trainers were incredibly supportive and the nutrition plan was easy to follow."</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="before">
+                            <img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Before transformation">
+                            <div class="before-label" data-i18n="transformations.before">Before</div>
+                        </div>
+                        <div class="after">
+                            <img src="https://images.pexels.com/photos/6456159/pexels-photo-6456159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="After transformation">
+                            <div class="after-label" data-i18n="transformations.after">After</div>
+                        </div>
+                    </div>
+                    <div class="transformation-info">
+                        <h3>Sarah Williams</h3>
+                        <p data-i18n="transformations.story2">"The Muscle Gain program helped me add 8kg of lean muscle in just 4 months. The progressive training system really works!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-nav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+            </div>
+        </div>
+
+        <div class="stats-counter">
+            <div class="counter-item animate-on-scroll">
+                <div class="counter-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <span class="counter-number" data-count="5000">0</span>
+                <span data-i18n="transformations.stat1">Happy Clients</span>
+            </div>
+            <div class="counter-item animate-on-scroll">
+                <div class="counter-icon">
+                    <i class="fas fa-weight"></i>
+                </div>
+                <span class="counter-number" data-count="12000">0</span>
+                <span data-i18n="transformations.stat2">Total Kg Lost</span>
+            </div>
+            <div class="counter-item animate-on-scroll">
+                <div class="counter-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <span class="counter-number" data-count="3500">0</span>
+                <span data-i18n="transformations.stat3">Kg Muscle Gained</span>
+            </div>
+            <div class="counter-item animate-on-scroll">
+                <div class="counter-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <span class="counter-number" data-count="98">0</span>
+                <span data-i18n="transformations.stat4">Success Rate %</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== NUTRITION SECTION ===== -->
+<section class="section section-light" id="nutrition">
+    <div class="container">
+        <h2 data-i18n="nutrition.title">Nutrition & Meal Plans</h2>
+        <p class="text-center mb-5" data-i18n="nutrition.subtitle">Fuel your body with the right nutrients for optimal performance and results</p>
+
+        <div class="nutrition-content">
+            <div class="meal-plan">
+                <h3 data-i18n="nutrition.plan.title">Sample Daily Meal Plan</h3>
+
+                <div class="meal">
+                    <div class="meal-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="meal-info">
+                        <h4 data-i18n="nutrition.plan.meal1.title">Breakfast</h4>
+                        <p data-i18n="nutrition.plan.meal1.description">Oatmeal with berries and protein powder</p>
+                        <div class="meal-macros">
+                            <span class="macro protein" data-i18n="nutrition.plan.protein">Protein: 25g</span>
+                            <span class="macro carbs" data-i18n="nutrition.plan.carbs">Carbs: 45g</span>
+                            <span class="macro fats" data-i18n="nutrition.plan.fats">Fats: 10g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal">
+                    <div class="meal-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="meal-info">
+                        <h4 data-i18n="nutrition.plan.meal2.title">Morning Snack</h4>
+                        <p data-i18n="nutrition.plan.meal2.description">Greek yogurt with almonds</p>
+                        <div class="meal-macros">
+                            <span class="macro protein" data-i18n="nutrition.plan.protein">Protein: 20g</span>
+                            <span class="macro carbs" data-i18n="nutrition.plan.carbs">Carbs: 15g</span>
+                            <span class="macro fats" data-i18n="nutrition.plan.fats">Fats: 12g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal">
+                    <div class="meal-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="meal-info">
+                        <h4 data-i18n="nutrition.plan.meal3.title">Lunch</h4>
+                        <p data-i18n="nutrition.plan.meal3.description">Grilled chicken with quinoa and vegetables</p>
+                        <div class="meal-macros">
+                            <span class="macro protein" data-i18n="nutrition.plan.protein">Protein: 35g</span>
+                            <span class="macro carbs" data-i18n="nutrition.plan.carbs">Carbs: 40g</span>
+                            <span class="macro fats" data-i18n="nutrition.plan.fats">Fats: 15g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal">
+                    <div class="meal-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="meal-info">
+                        <h4 data-i18n="nutrition.plan.meal4.title">Afternoon Snack</h4>
+                        <p data-i18n="nutrition.plan.meal4.description">Protein shake with banana</p>
+                        <div class="meal-macros">
+                            <span class="macro protein" data-i18n="nutrition.plan.protein">Protein: 30g</span>
+                            <span class="macro carbs" data-i18n="nutrition.plan.carbs">Carbs: 25g</span>
+                            <span class="macro fats" data-i18n="nutrition.plan.fats">Fats: 5g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal">
+                    <div class="meal-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="meal-info">
+                        <h4 data-i18n="nutrition.plan.meal5.title">Dinner</h4>
+                        <p data-i18n="nutrition.plan.meal5.description">Salmon with sweet potato and asparagus</p>
+                        <div class="meal-macros">
+                            <span class="macro protein" data-i18n="nutrition.plan.protein">Protein: 30g</span>
+                            <span class="macro carbs" data-i18n="nutrition.plan.carbs">Carbs: 35g</span>
+                            <span class="macro fats" data-i18n="nutrition.plan.fats">Fats: 20g</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator">
+                <h3 data-i18n="nutrition.calculator.title">Daily Calorie Calculator</h3>
+
+                <form id="calorieCalculator">
+                    <div class="form-group">
+                        <label for="gender" data-i18n="nutrition.calculator.gender">Gender</label>
+                        <select class="form-control" id="gender" required>
+                            <option value="male" data-i18n="nutrition.calculator.male">Male</option>
+                            <option value="female" data-i18n="nutrition.calculator.female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age" data-i18n="nutrition.calculator.age">Age</label>
+                        <input type="number" class="form-control" id="age" min="15" max="80" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="height" data-i18n="nutrition.calculator.height">Height (cm)</label>
+                        <input type="number" class="form-control" id="height" min="100" max="250" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight" data-i18n="nutrition.calculator.weight">Weight (kg)</label>
+                        <input type="number" class="form-control" id="weight" min="30" max="200" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activity" data-i18n="nutrition.calculator.activity">Activity Level</label>
+                        <select class="form-control" id="activity" required>
+                            <option value="1.2" data-i18n="nutrition.calculator.sedentary">Sedentary (little or no exercise)</option>
+                            <option value="1.375" data-i18n="nutrition.calculator.light">Lightly active (light exercise 1-3 days/week)</option>
+                            <option value="1.55" data-i18n="nutrition.calculator.moderate">Moderately active (moderate exercise 3-5 days/week)</option>
+                            <option value="1.725" data-i18n="nutrition.calculator.very">Very active (hard exercise 6-7 days/week)</option>
+                            <option value="1.9" data-i18n="nutrition.calculator.extra">Extra active (very hard exercise, physical job)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal" data-i18n="nutrition.calculator.goal">Goal</label>
+                        <select class="form-control" id="goal" required>
+                            <option value="lose" data-i18n="nutrition.calculator.lose">Weight Loss</option>
+                            <option value="maintain" data-i18n="nutrition.calculator.maintain">Maintain Weight</option>
+                            <option value="gain" data-i18n="nutrition.calculator.gain">Weight Gain</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn w-100" data-i18n="nutrition.calculator.calculate">Calculate</button>
+                </form>
+
+                <div class="calculator-result" id="calculatorResult">
+                    <h4 data-i18n="nutrition.calculator.result">Your Daily Calorie Needs</h4>
+                    <div class="result-value" id="resultValue">0</div>
+                    <p data-i18n="nutrition.calculator.description">calories per day to reach your goal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== BLOG SECTION ===== -->
+<section class="section" id="blog">
+    <div class="container">
+        <h2 data-i18n="blog.title">Fitness Blog & Tips</h2>
+        <p class="text-center mb-5" data-i18n="blog.subtitle">Expert advice to help you on your fitness journey</p>
+
+        <div class="blog-grid">
+            <div class="blog-card animate-on-scroll" data-blog="1">
+                <div class="blog-img">
+                    <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Weight Loss Tips">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span data-i18n="blog.article1.date">May 15, 2023</span>
+                        <span class="blog-tag" data-i18n="blog.article1.tag">Weight Loss</span>
+                    </div>
+                    <h4 data-i18n="blog.article1.title">5 Common Weight Loss Mistakes and How to Avoid Them</h4>
+                    <p data-i18n="blog.article1.preview">Learn about the most common pitfalls people encounter when trying to lose weight and how to overcome them for lasting results.</p>
+                </div>
+            </div>
+
+            <div class="blog-card animate-on-scroll" data-blog="2">
+                <div class="blog-img">
+                    <img src="https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Muscle Building">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span data-i18n="blog.article2.date">April 28, 2023</span>
+                        <span class="blog-tag" data-i18n="blog.article2.tag">Muscle Gain</span>
+                    </div>
+                    <h4 data-i18n="blog.article2.title">The Science of Muscle Hypertrophy: How to Build Muscle Efficiently</h4>
+                    <p data-i18n="blog.article2.preview">Understand the physiological processes behind muscle growth and learn the most effective training techniques for maximizing hypertrophy.</p>
+                </div>
+            </div>
+
+            <div class="blog-card animate-on-scroll" data-blog="3">
+                <div class="blog-img">
+                    <img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Nutrition">
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span data-i18n="blog.article3.date">April 10, 2023</span>
+                        <span class="blog-tag" data-i18n="blog.article3.tag">Nutrition</span>
+                    </div>
+                    <h4 data-i18n="blog.article3.title">Macronutrients 101: Understanding Protein, Carbs and Fats</h4>
+                    <p data-i18n="blog.article3.preview">A comprehensive guide to macronutrients and how to balance them for your specific fitness goals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Modals -->
+<div class="blog-modal" id="blogModal1">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 data-i18n="blog.article1.title">5 Common Weight Loss Mistakes and How to Avoid Them</h3>
+        <div class="blog-meta mb-4">
+            <span data-i18n="blog.article1.date">May 15, 2023</span>
+            <span class="blog-tag" data-i18n="blog.article1.tag">Weight Loss</span>
+        </div>
+        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Weight Loss Tips" class="mb-4">
+        <p data-i18n="blog.article1.content1">Weight loss journeys are often filled with challenges, and many people make common mistakes that hinder their progress. In this article, we'll explore five of the most frequent weight loss pitfalls and provide practical solutions to help you achieve your goals more effectively.</p>
+        <p data-i18n="blog.article1.content2">One of the biggest mistakes is setting unrealistic expectations. Many people expect to lose large amounts of weight quickly, which leads to frustration when results don't match expectations. Sustainable weight loss typically occurs at a rate of 0.5-1kg per week. Setting smaller, achievable goals can help maintain motivation and create lasting habits.</p>
+        <p data-i18n="blog.article1.content3">Another common error is focusing solely on exercise while neglecting nutrition. While physical activity is crucial for overall health, weight loss is primarily achieved through creating a calorie deficit. Nutrition accounts for approximately 80% of weight loss success, so paying attention to your diet is essential.</p>
+    </div>
+</div>
+
+<div class="blog-modal" id="blogModal2">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 data-i18n="blog.article2.title">The Science of Muscle Hypertrophy: How to Build Muscle Efficiently</h3>
+        <div class="blog-meta mb-4">
+            <span data-i18n="blog.article2.date">April 28, 2023</span>
+            <span class="blog-tag" data-i18n="blog.article2.tag">Muscle Gain</span>
+        </div>
+        <img src="https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Muscle Building" class="mb-4">
+        <p data-i18n="blog.article2.content1">Muscle hypertrophy, the process of increasing muscle size, is a complex physiological adaptation to resistance training. Understanding the science behind muscle growth can help you optimize your training for better results.</p>
+        <p data-i18n="blog.article2.content2">There are two primary types of muscle hypertrophy: myofibrillar and sarcoplasmic. Myofibrillar hypertrophy involves an increase in the size and number of myofibrils, the contractile proteins in muscle fibers, leading to greater strength. Sarcoplasmic hypertrophy involves an increase in the volume of sarcoplasmic fluid in the muscle cell, resulting in larger muscle size without proportional strength gains.</p>
+        <p data-i18n="blog.article2.content3">To stimulate muscle growth effectively, you need to apply the principle of progressive overload. This means gradually increasing the demands on your musculoskeletal system over time. This can be achieved by increasing weight, repetitions, sets, or training frequency. Consistency and proper recovery are equally important for maximizing muscle growth.</p>
+    </div>
+</div>
+
+<div class="blog-modal" id="blogModal3">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 data-i18n="blog.article3.title">Macronutrients 101: Understanding Protein, Carbs and Fats</h3>
+        <div class="blog-meta mb-4">
+            <span data-i18n="blog.article3.date">April 10, 2023</span>
+            <span class="blog-tag" data-i18n="blog.article3.tag">Nutrition</span>
+        </div>
+        <img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Nutrition" class="mb-4">
+        <p data-i18n="blog.article3.content1">Macronutrients are the nutrients your body needs in large amounts to function properly. The three primary macronutrients are proteins, carbohydrates, and fats. Each plays a unique and essential role in your body, and understanding how to balance them is key to achieving your fitness goals.</p>
+        <p data-i18n="blog.article3.content2">Proteins are the building blocks of your body, essential for muscle repair, immune function, and hormone production. Aim for 1.6-2.2g of protein per kilogram of body weight if you're regularly exercising. Good sources include lean meats, fish, eggs, dairy, legumes, and protein supplements.</p>
+        <p data-i18n="blog.article3.content3">Carbohydrates are your body's primary energy source, especially important for fueling workouts and supporting recovery. Focus on complex carbohydrates like whole grains, fruits, and vegetables rather than simple sugars. Fats are crucial for hormone production, nutrient absorption, and brain function. Prioritize unsaturated fats from sources like avocados, nuts, seeds, and olive oil.</p>
+    </div>
+</div>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="section section-light" id="faq">
+    <div class="container">
+        <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
+        <p class="text-center mb-5" data-i18n="faq.subtitle">Find answers to the most common questions about our programs and services</p>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq.question1">How soon can I expect to see results?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq.answer1">Most clients begin to notice improvements in energy levels and workout performance within 2-3 weeks. Visible physical changes typically become apparent after 4-6 weeks of consistent training and proper nutrition. The rate of progress depends on various factors including your starting point, consistency, and adherence to the program.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq.question2">Do I need any special equipment for the home workouts?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq.answer2">Our home workout programs are designed to require minimal equipment. Many exercises use only bodyweight, but we do recommend having a set of resistance bands and dumbbells if possible for added variety and progression. We provide alternatives for all exercises in case you don't have access to equipment.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq.question3">Can I do the programs if I have a previous injury?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq.answer3">Yes, but we recommend consulting with your healthcare provider first. Our trainers can modify exercises to accommodate most injuries and physical limitations. During your initial assessment, be sure to inform us about any injuries or health concerns so we can create a safe and effective program for you.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq.question4">How often should I train each week?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq.answer4">For beginners, we recommend 3-4 sessions per week to allow for proper recovery. Intermediate trainees can handle 4-5 sessions, while advanced individuals may train 5-6 times per week. The optimal frequency depends on your goals, recovery capacity, and training experience. Our programs include guidance on training frequency based on your level.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq.question5">What makes your nutrition plans different?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq.answer5">Our nutrition plans are personalized based on your specific goals, preferences, and lifestyle. Rather than providing a one-size-fits-all approach, we focus on teaching sustainable habits and flexible dieting principles. We emphasize whole foods while allowing for flexibility, making it easier to maintain your nutrition plan long-term.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="section" id="contact">
+    <div class="container">
+        <h2 data-i18n="contact.title">Get In Touch</h2>
+        <p class="text-center mb-5" data-i18n="contact.subtitle">Ready to start your transformation? Contact us today!</p>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4 data-i18n="contact.address.title">Visit Our Studio</h4>
+                        <p data-i18n="contact.address.text">123 Fitness Street, Health District<br>New York, NY 10001</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4 data-i18n="contact.phone.title">Call Us</h4>
+                        <p data-i18n="contact.phone.text">+1 (555) 123-4567</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 data-i18n="contact.email.title">Email Us</h4>
+                        <p>info@fitlifestudio.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 data-i18n="contact.hours.title">Opening Hours</h4>
+                        <p data-i18n="contact.hours.text">Monday - Friday: 6:00 AM - 10:00 PM<br>Saturday - Sunday: 7:00 AM - 8:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" data-i18n="contact.form.name">Your Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" data-i18n="contact.form.email">Email Address</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" data-i18n="contact.form.subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact.form.message">Your Message</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn w-100" data-i18n="contact.form.submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-i18n="footer.about">About Us</h3>
+                <p data-i18n="footer.aboutText">FitLife Studio is dedicated to helping individuals achieve their fitness goals through personalized training programs, expert guidance, and sustainable lifestyle changes.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="footer.links">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="#programs" data-i18n="nav.programs">Programs</a></li>
+                    <li><a href="#nutrition" data-i18n="nav.nutrition">Nutrition</a></li>
+                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="footer.programs">Programs</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-i18n="programs.program1.title">Weight Loss</a></li>
+                    <li><a href="#" data-i18n="programs.program2.title">Muscle Gain</a></li>
+                    <li><a href="#" data-i18n="programs.program3.title">Home Workouts</a></li>
+                    <li><a href="#" data-i18n="programs.program4.title">Online Coaching</a></li>
+                    <li><a href="#" data-i18n="programs.program5.title">Personal Training</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="footer.contact">Contact Info</h3>
+                <ul class="footer-links">
+                    <li data-i18n="contact.address.text">123 Fitness Street, Health District, NY 10001</li>
+                    <li data-i18n="contact.phone.text">+1 (555) 123-4567</li>
+                    <li>info@fitlifestudio.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2023 FitLife Studio. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== SCROLL TO TOP BUTTON ===== -->
+<div class="scroll-to-top" id="scrollToTop">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<script>
+    // ===== TRANSLATIONS OBJECT =====
+    const translations = {
+        en: {
+            // Site name
+            "site-name": "FitLife Studio",
+
+            // Navigation
+            "nav.home": "Home",
+            "nav.about": "About",
+            "nav.programs": "Programs",
+            "nav.transformations": "Transformations",
+            "nav.nutrition": "Nutrition",
+            "nav.blog": "Blog",
+            "nav.faq": "FAQ",
+            "nav.contact": "Contact",
+
+            // Hero section
+            "hero.title": "Transform Your Body, Transform Your Life",
+            "hero.subtitle": "Join thousands of successful clients who have achieved their fitness goals with our personalized training programs and expert guidance.",
+            "hero.cta1": "See Programs",
+            "hero.cta2": "Online Coaching",
+
+            // About section
+            "about.title": "About FitLife Studio",
+            "about.subtitle": "Your Journey to a Healthier You Starts Here",
+            "about.text1": "At FitLife Studio, we believe that fitness is not just about physical transformation but about building a sustainable, healthy lifestyle. Our team of certified trainers and nutrition experts are dedicated to helping you achieve your goals, whether it's weight loss, muscle gain, or overall wellness.",
+            "about.text2": "We combine science-based training methods with personalized nutrition plans to ensure you get the best results in the most efficient way possible. Our holistic approach focuses on strength, endurance, flexibility, and mental wellbeing.",
+            "about.stat1": "Happy Clients",
+            "about.stat2": "Expert Trainers",
+            "about.stat3": "Success Rate",
+            "about.team": "Meet Our Expert Team",
+            "about.trainer1": "Strength & Conditioning Specialist",
+            "about.trainer2": "Nutrition & Wellness Coach",
+            "about.trainer3": "HIIT & Cardio Specialist",
+            "about.specialty1": "Weight Loss",
+            "about.specialty2": "Muscle Building",
+            "about.specialty3": "Functional Training",
+            "about.specialty4": "Nutrition Planning",
+            "about.specialty5": "Yoga & Pilates",
+            "about.specialty6": "Mindfulness",
+            "about.specialty7": "HIIT",
+            "about.specialty8": "Cardio",
+            "about.specialty9": "Endurance Training",
+
+            // Programs section
+            "programs.title": "Our Fitness Programs",
+            "programs.subtitle": "Choose the program that best fits your goals and lifestyle",
+            "programs.cta": "Learn More",
+            "programs.program1.title": "Weight Loss",
+            "programs.program1.description": "Shed excess fat and improve your health with our comprehensive weight loss program.",
+            "programs.program1.feature1": "12-week structured plan",
+            "programs.program1.feature2": "Personalized nutrition guide",
+            "programs.program1.feature3": "Weekly progress tracking",
+            "programs.program1.stat1": "Fat Loss",
+            "programs.program1.stat2": "Endurance",
+            "programs.program1.stat3": "Strength",
+            "programs.program2.title": "Muscle Gain",
+            "programs.program2.description": "Build lean muscle mass and increase strength with our targeted hypertrophy program.",
+            "programs.program2.feature1": "Progressive overload training",
+            "programs.program2.feature2": "High-protein meal plans",
+            "programs.program2.feature3": "Recovery protocols",
+            "programs.program2.stat1": "Muscle Growth",
+            "programs.program2.stat2": "Strength",
+            "programs.program2.stat3": "Endurance",
+            "programs.program3.title": "Home Workouts",
+            "programs.program3.description": "Effective workouts you can do anywhere with minimal equipment.",
+            "programs.program3.feature1": "No equipment needed",
+            "programs.program3.feature2": "30-minute sessions",
+            "programs.program3.feature3": "Video demonstrations",
+            "programs.program3.stat1": "Convenience",
+            "programs.program3.stat2": "Fat Loss",
+            "programs.program3.stat3": "Strength",
+            "programs.program4.title": "Online Coaching",
+            "programs.program5.title": "Personal Training",
+
+            // Transformations section
+            "transformations.title": "Client Transformations",
+            "transformations.subtitle": "Real results from real people - see what's possible with dedication and the right guidance",
+            "transformations.before": "Before",
+            "transformations.after": "After",
+            "transformations.story1": "\"I lost 25kg in 6 months with the Weight Loss program. The trainers were incredibly supportive and the nutrition plan was easy to follow.\"",
+            "transformations.story2": "\"The Muscle Gain program helped me add 8kg of lean muscle in just 4 months. The progressive training system really works!\"",
+            "transformations.stat1": "Happy Clients",
+            "transformations.stat2": "Total Kg Lost",
+            "transformations.stat3": "Kg Muscle Gained",
+            "transformations.stat4": "Success Rate %",
+
+            // Nutrition section
+            "nutrition.title": "Nutrition & Meal Plans",
+            "nutrition.subtitle": "Fuel your body with the right nutrients for optimal performance and results",
+            "nutrition.plan.title": "Sample Daily Meal Plan",
+            "nutrition.plan.meal1.title": "Breakfast",
+            "nutrition.plan.meal1.description": "Oatmeal with berries and protein powder",
+            "nutrition.plan.meal2.title": "Morning Snack",
+            "nutrition.plan.meal2.description": "Greek yogurt with almonds",
+            "nutrition.plan.meal3.title": "Lunch",
+            "nutrition.plan.meal3.description": "Grilled chicken with quinoa and vegetables",
+            "nutrition.plan.meal4.title": "Afternoon Snack",
+            "nutrition.plan.meal4.description": "Protein shake with banana",
+            "nutrition.plan.meal5.title": "Dinner",
+            "nutrition.plan.meal5.description": "Salmon with sweet potato and asparagus",
+            "nutrition.plan.protein": "Protein",
+            "nutrition.plan.carbs": "Carbs",
+            "nutrition.plan.fats": "Fats",
+            "nutrition.calculator.title": "Daily Calorie Calculator",
+            "nutrition.calculator.gender": "Gender",
+            "nutrition.calculator.male": "Male",
+            "nutrition.calculator.female": "Female",
+            "nutrition.calculator.age": "Age",
+            "nutrition.calculator.height": "Height (cm)",
+            "nutrition.calculator.weight": "Weight (kg)",
+            "nutrition.calculator.activity": "Activity Level",
+            "nutrition.calculator.sedentary": "Sedentary (little or no exercise)",
+            "nutrition.calculator.light": "Lightly active (light exercise 1-3 days/week)",
+            "nutrition.calculator.moderate": "Moderately active (moderate exercise 3-5 days/week)",
+            "nutrition.calculator.very": "Very active (hard exercise 6-7 days/week)",
+            "nutrition.calculator.extra": "Extra active (very hard exercise, physical job)",
+            "nutrition.calculator.goal": "Goal",
+            "nutrition.calculator.lose": "Weight Loss",
+            "nutrition.calculator.maintain": "Maintain Weight",
+            "nutrition.calculator.gain": "Weight Gain",
+            "nutrition.calculator.calculate": "Calculate",
+            "nutrition.calculator.result": "Your Daily Calorie Needs",
+            "nutrition.calculator.description": "calories per day to reach your goal",
+
+            // Blog section
+            "blog.title": "Fitness Blog & Tips",
+            "blog.subtitle": "Expert advice to help you on your fitness journey",
+            "blog.article1.date": "May 15, 2023",
+            "blog.article1.tag": "Weight Loss",
+            "blog.article1.title": "5 Common Weight Loss Mistakes and How to Avoid Them",
+            "blog.article1.preview": "Learn about the most common pitfalls people encounter when trying to lose weight and how to overcome them for lasting results.",
+            "blog.article1.content1": "Weight loss journeys are often filled with challenges, and many people make common mistakes that hinder their progress. In this article, we'll explore five of the most frequent weight loss pitfalls and provide practical solutions to help you achieve your goals more effectively.",
+            "blog.article1.content2": "One of the biggest mistakes is setting unrealistic expectations. Many people expect to lose large amounts of weight quickly, which leads to frustration when results don't match expectations. Sustainable weight loss typically occurs at a rate of 0.5-1kg per week. Setting smaller, achievable goals can help maintain motivation and create lasting habits.",
+            "blog.article1.content3": "Another common error is focusing solely on exercise while neglecting nutrition. While physical activity is crucial for overall health, weight loss is primarily achieved through creating a calorie deficit. Nutrition accounts for approximately 80% of weight loss success, so paying attention to your diet is essential.",
+            "blog.article2.date": "April 28, 2023",
+            "blog.article2.tag": "Muscle Gain",
+            "blog.article2.title": "The Science of Muscle Hypertrophy: How to Build Muscle Efficiently",
+            "blog.article2.preview": "Understand the physiological processes behind muscle growth and learn the most effective training techniques for maximizing hypertrophy.",
+            "blog.article2.content1": "Muscle hypertrophy, the process of increasing muscle size, is a complex physiological adaptation to resistance training. Understanding the science behind muscle growth can help you optimize your training for better results.",
+            "blog.article2.content2": "There are two primary types of muscle hypertrophy: myofibrillar and sarcoplasmic. Myofibrillar hypertrophy involves an increase in the size and number of myofibrils, the contractile proteins in muscle fibers, leading to greater strength. Sarcoplasmic hypertrophy involves an increase in the volume of sarcoplasmic fluid in the muscle cell, resulting in larger muscle size without proportional strength gains.",
+            "blog.article2.content3": "To stimulate muscle growth effectively, you need to apply the principle of progressive overload. This means gradually increasing the demands on your musculoskeletal system over time. This can be achieved by increasing weight, repetitions, sets, or training frequency. Consistency and proper recovery are equally important for maximizing muscle growth.",
+            "blog.article3.date": "April 10, 2023",
+            "blog.article3.tag": "Nutrition",
+            "blog.article3.title": "Macronutrients 101: Understanding Protein, Carbs and Fats",
+            "blog.article3.preview": "A comprehensive guide to macronutrients and how to balance them for your specific fitness goals.",
+            "blog.article3.content1": "Macronutrients are the nutrients your body needs in large amounts to function properly. The three primary macronutrients are proteins, carbohydrates, and fats. Each plays a unique and essential role in your body, and understanding how to balance them is key to achieving your fitness goals.",
+            "blog.article3.content2": "Proteins are the building blocks of your body, essential for muscle repair, immune function, and hormone production. Aim for 1.6-2.2g of protein per kilogram of body weight if you're regularly exercising. Good sources include lean meats, fish, eggs, dairy, legumes, and protein supplements.",
+            "blog.article3.content3": "Carbohydrates are your body's primary energy source, especially important for fueling workouts and supporting recovery. Focus on complex carbohydrates like whole grains, fruits, and vegetables rather than simple sugars. Fats are crucial for hormone production, nutrient absorption, and brain function. Prioritize unsaturated fats from sources like avocados, nuts, seeds, and olive oil.",
+
+            // FAQ section
+            "faq.title": "Frequently Asked Questions",
+            "faq.subtitle": "Find answers to the most common questions about our programs and services",
+            "faq.question1": "How soon can I expect to see results?",
+            "faq.answer1": "Most clients begin to notice improvements in energy levels and workout performance within 2-3 weeks. Visible physical changes typically become apparent after 4-6 weeks of consistent training and proper nutrition. The rate of progress depends on various factors including your starting point, consistency, and adherence to the program.",
+            "faq.question2": "Do I need any special equipment for the home workouts?",
+            "faq.answer2": "Our home workout programs are designed to require minimal equipment. Many exercises use only bodyweight, but we do recommend having a set of resistance bands and dumbbells if possible for added variety and progression. We provide alternatives for all exercises in case you don't have access to equipment.",
+            "faq.question3": "Can I do the programs if I have a previous injury?",
+            "faq.answer3": "Yes, but we recommend consulting with your healthcare provider first. Our trainers can modify exercises to accommodate most injuries and physical limitations. During your initial assessment, be sure to inform us about any injuries or health concerns so we can create a safe and effective program for you.",
+            "faq.question4": "How often should I train each week?",
+            "faq.answer4": "For beginners, we recommend 3-4 sessions per week to allow for proper recovery. Intermediate trainees can handle 4-5 sessions, while advanced individuals may train 5-6 times per week. The optimal frequency depends on your goals, recovery capacity, and training experience. Our programs include guidance on training frequency based on your level.",
+            "faq.question5": "What makes your nutrition plans different?",
+            "faq.answer5": "Our nutrition plans are personalized based on your specific goals, preferences, and lifestyle. Rather than providing a one-size-fits-all approach, we focus on teaching sustainable habits and flexible dieting principles. We emphasize whole foods while allowing for flexibility, making it easier to maintain your nutrition plan long-term.",
+
+            // Contact section
+            "contact.title": "Get In Touch",
+            "contact.subtitle": "Ready to start your transformation? Contact us today!",
+            "contact.address.title": "Visit Our Studio",
+            "contact.address.text": "123 Fitness Street, Health District\nNew York, NY 10001",
+            "contact.phone.title": "Call Us",
+            "contact.phone.text": "+1 (555) 123-4567",
+            "contact.email.title": "Email Us",
+            "contact.hours.title": "Opening Hours",
+            "contact.hours.text": "Monday - Friday: 6:00 AM - 10:00 PM\nSaturday - Sunday: 7:00 AM - 8:00 PM",
+            "contact.form.name": "Your Name",
+            "contact.form.email": "Email Address",
+            "contact.form.subject": "Subject",
+            "contact.form.message": "Your Message",
+            "contact.form.submit": "Send Message",
+
+            // Footer
+            "footer.about": "About Us",
+            "footer.aboutText": "FitLife Studio is dedicated to helping individuals achieve their fitness goals through personalized training programs, expert guidance, and sustainable lifestyle changes.",
+            "footer.links": "Quick Links",
+            "footer.programs": "Programs",
+            "footer.contact": "Contact Info",
+            "footer.rights": "All rights reserved."
+        },
+        tr: {
+            // Site name
+            "site-name": "FitLife Stüdyo",
+
+            // Navigation
+            "nav.home": "Ana Sayfa",
+            "nav.about": "Hakkımızda",
+            "nav.programs": "Programlar",
+            "nav.transformations": "Dönüşümler",
+            "nav.nutrition": "Beslenme",
+            "nav.blog": "Blog",
+            "nav.faq": "SSS",
+            "nav.contact": "İletişim",
+
+            // Hero section
+            "hero.title": "Vücudunuzu Dönüştürün, Hayatınızı Dönüştürün",
+            "hero.subtitle": "Kişiselleştirilmiş antrenman programlarımız ve uzman rehberliğimizle fitness hedeflerine ulaşan binlerce başarılı müşterimize katılın.",
+            "hero.cta1": "Programları Gör",
+            "hero.cta2": "Online Koçluk",
+
+            // About section
+            "about.title": "FitLife Stüdyo Hakkında",
+            "about.subtitle": "Daha Sağlıklı Bir Yolculuğunuz Burada Başlıyor",
+            "about.text1": "FitLife Stüdyo'da, fitness'ın sadece fiziksel bir dönüşüm olmadığına, aynı zamanda sürdürülebilir, sağlıklı bir yaşam tarzı oluşturmak olduğuna inanıyoruz. Sertifikalı eğitmenlerimiz ve beslenme uzmanlarımızdan oluşan ekibimiz, kilo verme, kas kazanma veya genel wellness hedeflerinize ulaşmanıza yardımcı olmaya kendini adamıştır.",
+            "about.text2": "Bilim temelli antrenman yöntemlerini kişiselleştirilmiş beslenme planlarıyla birleştirerek en verimli şekilde en iyi sonuçları almanızı sağlıyoruz. Bütünsel yaklaşımımız güç, dayanıklılık, esneklik ve zihinsel iyilik haline odaklanır.",
+            "about.stat1": "Mutlu Müşteri",
+            "about.stat2": "Uzman Eğitmen",
+            "about.stat3": "Başarı Oranı",
+            "about.team": "Uzman Ekibimizle Tanışın",
+            "about.trainer1": "Güç ve Kondisyon Uzmanı",
+            "about.trainer2": "Beslenme ve Wellness Koçu",
+            "about.trainer3": "HIIT ve Kardiyo Uzmanı",
+            "about.specialty1": "Kilo Verme",
+            "about.specialty2": "Kas Yapma",
+            "about.specialty3": "Fonksiyonel Antrenman",
+            "about.specialty4": "Beslenme Planlama",
+            "about.specialty5": "Yoga ve Pilates",
+            "about.specialty6": "Farkındalık",
+            "about.specialty7": "HIIT",
+            "about.specialty8": "Kardiyo",
+            "about.specialty9": "Dayanıklılık Antrenmanı",
+
+            // Programs section
+            "programs.title": "Fitness Programlarımız",
+            "programs.subtitle": "Hedeflerinize ve yaşam tarzınıza en uygun programı seçin",
+            "programs.cta": "Daha Fazla Bilgi",
+            "programs.program1.title": "Kilo Verme",
+            "programs.program1.description": "Kapsamlı kilo verme programımızla fazla yağlardan kurtulun ve sağlığınızı iyileştirin.",
+            "programs.program1.feature1": "12 haftalık yapılandırılmış plan",
+            "programs.program1.feature2": "Kişiselleştirilmiş beslenme rehberi",
+            "programs.program1.feature3": "Haftalık ilerleme takibi",
+            "programs.program1.stat1": "Yağ Kaybı",
+            "programs.program1.stat2": "Dayanıklılık",
+            "programs.program1.stat3": "Güç",
+            "programs.program2.title": "Kas Kazanma",
+            "programs.program2.description": "Hedefli hipertrofi programımızla yağsız kas kütlesi oluşturun ve gücünüzü artırın.",
+            "programs.program2.feature1": "Aşamalı aşırı yükleme antrenmanı",
+            "programs.program2.feature2": "Yüksek proteinli öğün planları",
+            "programs.program2.feature3": "Toparlanma protokolleri",
+            "programs.program2.stat1": "Kas Büyümesi",
+            "programs.program2.stat2": "Güç",
+            "programs.program2.stat3": "Dayanıklılık",
+            "programs.program3.title": "Ev Antrenmanları",
+            "programs.program3.description": "Minimum ekipmanla her yerde yapabileceğiniz etkili antrenmanlar.",
+            "programs.program3.feature1": "Ekipman gerekmez",
+            "programs.program3.feature2": "30 dakikalık seanslar",
+            "programs.program3.feature3": "Video gösterimleri",
+            "programs.program3.stat1": "Kolaylık",
+            "programs.program3.stat2": "Yağ Kaybı",
+            "programs.program3.stat3": "Güç",
+            "programs.program4.title": "Online Koçluk",
+            "programs.program5.title": "Kişisel Antrenman",
+
+            // Transformations section
+            "transformations.title": "Müşteri Dönüşümleri",
+            "transformations.subtitle": "Gerçek insanlardan gerçek sonuçlar - azim ve doğru rehberlikle neler mümkün görün",
+            "transformations.before": "Önce",
+            "transformations.after": "Sonra",
+            "transformations.story1": "\"Kilo Verme programıyla 6 ayda 25kg verdim. Eğitmenler inanılmaz destekleyiciydi ve beslenme planı takip etmesi kolaydı.\"",
+            "transformations.story2": "\"Kas Kazanma programı, sadece 4 ayda 8kg yağsız kas eklememe yardımcı oldu. Aşamalı antrenman sistemi gerçekten işe yarıyor!\"",
+            "transformations.stat1": "Mutlu Müşteri",
+            "transformations.stat2": "Toplam Kaybedilen Kg",
+            "transformations.stat3": "Kazanılan Kas Kg",
+            "transformations.stat4": "Başarı Oranı %",
+
+            // Nutrition section
+            "nutrition.title": "Beslenme ve Öğün Planları",
+            "nutrition.subtitle": "Vücudunuzu optimum performans ve sonuçlar için doğru besinlerle besleyin",
+            "nutrition.plan.title": "Örnek Günlük Öğün Planı",
+            "nutrition.plan.meal1.title": "Kahvaltı",
+            "nutrition.plan.meal1.description": "Protein tozu ve meyveli yulaf ezmesi",
+            "nutrition.plan.meal2.title": "Sabah Atıştırmalığı",
+            "nutrition.plan.meal2.description": "Bademli yoğurt",
+            "nutrition.plan.meal3.title": "Öğle Yemeği",
+            "nutrition.plan.meal3.description": "Sebzeli kinoa ve ızgara tavuk",
+            "nutrition.plan.meal4.title": "Öğleden Sonra Atıştırmalığı",
+            "nutrition.plan.meal4.description": "Muzlu protein shake",
+            "nutrition.plan.meal5.title": "Akşam Yemeği",
+            "nutrition.plan.meal5.description": "Tatlı patates ve kuşkonmazlı somon",
+            "nutrition.plan.protein": "Protein",
+            "nutrition.plan.carbs": "Karbonhidrat",
+            "nutrition.plan.fats": "Yağ",
+            "nutrition.calculator.title": "Günlük Kalori Hesaplayıcı",
+            "nutrition.calculator.gender": "Cinsiyet",
+            "nutrition.calculator.male": "Erkek",
+            "nutrition.calculator.female": "Kadın",
+            "nutrition.calculator.age": "Yaş",
+            "nutrition.calculator.height": "Boy (cm)",
+            "nutrition.calculator.weight": "Kilo (kg)",
+            "nutrition.calculator.activity": "Aktivite Seviyesi",
+            "nutrition.calculator.sedentary": "Hareketsiz (az veya hiç egzersiz yok)",
+            "nutrition.calculator.light": "Hafif aktif (hafif egzersiz haftada 1-3 gün)",
+            "nutrition.calculator.moderate": "Orta derecede aktif (orta egzersiz haftada 3-5 gün)",
+            "nutrition.calculator.very": "Çok aktif (yoğun egzersiz haftada 6-7 gün)",
+            "nutrition.calculator.extra": "Ekstra aktif (çok yoğun egzersiz, fiziksel iş)",
+            "nutrition.calculator.goal": "Hedef",
+            "nutrition.calculator.lose": "Kilo Verme",
+            "nutrition.calculator.maintain": "Kilo Koruma",
+            "nutrition.calculator.gain": "Kilo Alma",
+            "nutrition.calculator.calculate": "Hesapla",
+            "nutrition.calculator.result": "Günlük Kalori İhtiyacınız",
+            "nutrition.calculator.description": "hedefinize ulaşmak için günlük kalori",
+
+            // Blog section
+            "blog.title": "Fitness Blog ve İpuçları",
+            "blog.subtitle": "Fitness yolculuğunuzda size yardımcı olacak uzman tavsiyeleri",
+            "blog.article1.date": "15 Mayıs 2023",
+            "blog.article1.tag": "Kilo Verme",
+            "blog.article1.title": "5 Yaygın Kilo Verme Hatası ve Bunlardan Nasıl Kaçınılır",
+            "blog.article1.preview": "Kilo vermeye çalışan insanların karşılaştığı en yaygın tuzakları ve kalıcı sonuçlar için bunların üstesinden nasıl gelineceğini öğrenin.",
+            "blog.article1.content1": "Kilo verme yolculukları genellikle zorluklarla doludur ve birçok insan ilerlemelerini engelleyen yaygın hatalar yapar. Bu yazıda, en sık karşılaşılan beş kilo verme tuzağını keşfedecek ve hedeflerinize daha etkili bir şekilde ulaşmanıza yardımcı olacak pratik çözümler sunacağız.",
+            "blog.article1.content2": "En büyük hatalardan biri gerçekçi olmayan beklentiler belirlemektir. Birçok insan hızlı bir şekilde büyük miktarda kilo vermeyi bekler, bu da sonuçlar beklentilerle eşleşmediğinde hayal kırıklığına yol açar. Sürdürülebilir kilo kaybı tipik olarak haftada 0,5-1 kg oranında gerçekleşir. Daha küçük, ulaşılabilir hedefler belirlemek motivasyonu korumaya ve kalıcı alışkanlıklar oluşturmaya yardımcı olabilir.",
+            "blog.article1.content3": "Bir diğer yaygın hata, sadece egzersize odaklanırken beslenmeyi ihmal etmektir. Fiziksel aktivite genel sağlık için çok önemli olsa da, kilo kaybı öncelikle bir kalori açığı oluşturularak sağlanır. Beslenme, kilo verme başarısının yaklaşık %80'ini oluşturur, bu nedenle diyetinize dikkat etmek çok önemlidir.",
+            "blog.article2.date": "28 Nisan 2023",
+            "blog.article2.tag": "Kas Kazanma",
+            "blog.article2.title": "Kas Hipertrofisi Bilimi: Kasları Verimli Bir Şekilde Nasıl Geliştirirsiniz",
+            "blog.article2.preview": "Kas büyümesinin arkasındaki fizyolojik süreçleri anlayın ve hipertrofiyi en üst düzeye çıkarmak için en etkili antrenman tekniklerini öğrenin.",
+            "blog.article2.content1": "Kas hipertrofisi, kas boyutunu artırma süreci, direnç antrenmanına karmaşık bir fizyolojik uyumdur. Kas büyümesinin arkasındaki bilimi anlamak, daha iyi sonuçlar için antrenmanınızı optimize etmenize yardımcı olabilir.",
+            "blog.article2.content2": "İki birincil kas hipertrofisi türü vardır: miyofibriller ve sarkoplazmik. Miyofibriller hipertrofi, kas liflerindeki kasılabilir proteinler olan miyofibrillerin boyutunda ve sayısında bir artış içerir, bu da daha fazla güce yol açar. Sarkoplazmik hipertrofi, kas hücresindeki sarkoplazmik sıvının hacminde bir artış içerir, bu da orantılı güç kazanımları olmadan daha büyük kas boyutuyla sonuçlanır.",
+            "blog.article2.content3": "Kas büyümesini etkili bir şekilde uyarmak için, aşamalı aşırı yükleme ilkesini uygulamanız gerekir. Bu, zamanla kas-iskelet sisteminizdeki talepleri kademeli olarak artırmak anlamına gelir. Bu, ağırlığı, tekrarları, setleri veya antrenman sıklığını artırarak başarılabilir. Tutarlılık ve uygun toparlanma, kas büyümesini en üst düzeye çıkarmak için eşit derecede önemlidir.",
+            "blog.article3.date": "10 Nisan 2023",
+            "blog.article3.tag": "Beslenme",
+            "blog.article3.title": "Makro Besinler 101: Protein, Karbonhidrat ve Yağları Anlamak",
+            "blog.article3.preview": "Makro besinler ve bunları belirli fitness hedefleriniz için nasıl dengeleyeceğiniz hakkında kapsamlı bir rehber.",
+            "blog.article3.content1": "Makro besinler, vücudunuzun düzgün çalışması için büyük miktarlarda ihtiyaç duyduğu besinlerdir. Üç birincil makro besin proteinler, karbonhidratlar ve yağlardır. Her biri vücudunuzda benzersiz ve temel bir rol oynar ve bunları nasıl dengeleyeceğinizi anlamak fitness hedeflerinize ulaşmanın anahtarıdır.",
+            "blog.article3.content2": "Proteinler vücudunuzun yapı taşlarıdır, kas onarımı, bağışıklık fonksiyonu ve hormon üretimi için gereklidir. Düzenli olarak egzersiz yapıyorsanız, vücut ağırlığının kilogramı başına 1,6-2,2g protein hedefleyin. İyi kaynaklar arasında yağsız etler, balık, yumurta, süt ürünleri, baklagiller ve protein takviyeleri bulunur.",
+            "blog.article3.content3": "Karbonhidratlar vücudunuzun birincil enerji kaynağıdır, özellikle antrenmanları desteklemek ve toparlanmayı desteklemek için önemlidir. Basit şekerler yerine tam tahıllar, meyveler ve sebzeler gibi kompleks karbonhidratlara odaklanın. Yağlar hormon üretimi, besin emilimi ve beyin fonksiyonu için çok önemlidir. Avokado, fındık, tohumlar ve zeytinyağı gibi kaynaklardan gelen doymamış yağlara öncelik verin.",
+
+            // FAQ section
+            "faq.title": "Sıkça Sorulan Sorular",
+            "faq.subtitle": "Programlarımız ve hizmetlerimiz hakkında en yaygın soruların yanıtlarını bulun",
+            "faq.question1": "Sonuçları ne zaman görmeyi bekleyebilirim?",
+            "faq.answer1": "Çoğu müşteri, enerji seviyelerinde ve antrenman performansında 2-3 hafta içinde iyileşmeler fark etmeye başlar. Görünür fiziksel değişiklikler genellikle tutarlı antrenman ve uygun beslenmenin 4-6 haftasından sonra belirgin hale gelir. İlerleme hızı, başlangıç noktanız, tutarlılığınız ve programa uyumunuz dahil olmak üzere çeşitli faktörlere bağlıdır.",
+            "faq.question2": "Ev antrenmanları için özel ekipmana ihtiyacım var mı?",
+            "faq.answer2": "Ev antrenman programlarımız minimum ekipman gerektirecek şekilde tasarlanmıştır. Birçok egzersiz sadece vücut ağırlığı kullanır, ancak mümkünse daha fazla çeşitlilik ve ilerleme için bir set direnç bandı ve dambıl bulundurmanızı öneririz. Ekipmana erişiminiz yoksa tüm egzersizler için alternatifler sağlıyoruz.",
+            "faq.question3": "Önceki bir yaralanmam varsa programları yapabilir miyim?",
+            "faq.answer3": "Evet, ancak önce sağlık uzmanınıza danışmanızı öneririz. Eğitmenlerimiz, çoğu yaralanma ve fiziksel kısıtlamayı karşılamak için egzersizleri değiştirebilir. İlk değerlendirmeniz sırasında, sizin için güvenli ve etkili bir program oluşturabilmemiz için herhangi bir yaralanma veya sağlık sorununu bize bildirdiğinizden emin olun.",
+            "faq.question4": "Haftada kaç kez antrenman yapmalıyım?",
+            "faq.answer4": "Yeni başlayanlar için uygun toparlanma için haftada 3-4 seans öneriyoruz. Orta düzeydeki sporcular 4-5 seansı, ileri düzeydeki bireyler ise haftada 5-6 kez antrenman yapabilir. Optimum sıklık hedeflerinize, toparlanma kapasitenize ve antrenman deneyiminize bağlıdır. Programlarımız, seviyenize göre antrenman sıklığı konusunda rehberlik içerir.",
+            "faq.question5": "Beslenme planlarınızı farklı kılan nedir?",
+            "faq.answer5": "Beslenme planlarımız, belirli hedeflerinize, tercihlerinize ve yaşam tarzınıza göre kişiselleştirilmiştir. Herkese uyan tek bir yaklaşım sunmak yerine, sürdürülebilir alışkanlıklar ve esnek diyet prensipleri öğretmeye odaklanıyoruz. Esnekliğe izin verirken tam gıdaları vurgulayarak beslenme planınızı uzun vadede sürdürmenizi kolaylaştırıyoruz.",
+
+            // Contact section
+            "contact.title": "İletişime Geçin",
+            "contact.subtitle": "Dönüşümünüze başlamaya hazır mısınız? Bugün bizimle iletişime geçin!",
+            "contact.address.title": "Stüdyomuzu Ziyaret Edin",
+            "contact.address.text": "123 Fitness Caddesi, Sağlık Bölgesi\nNew York, NY 10001",
+            "contact.phone.title": "Bizi Arayın",
+            "contact.phone.text": "+1 (555) 123-4567",
+            "contact.email.title": "Bize E-posta Gönderin",
+            "contact.hours.title": "Çalışma Saatleri",
+            "contact.hours.text": "Pazartesi - Cuma: 06:00 - 22:00\nCumartesi - Pazar: 07:00 - 20:00",
+            "contact.form.name": "Adınız",
+            "contact.form.email": "E-posta Adresiniz",
+            "contact.form.subject": "Konu",
+            "contact.form.message": "Mesajınız",
+            "contact.form.submit": "Mesaj Gönder",
+
+            // Footer
+            "footer.about": "Hakkımızda",
+            "footer.aboutText": "FitLife Stüdyo, kişiselleştirilmiş antrenman programları, uzman rehberlik ve sürdürülebilir yaşam tarzı değişiklikleri yoluyla bireylerin fitness hedeflerine ulaşmalarına yardımcı olmaya kendini adamıştır.",
+            "footer.links": "Hızlı Bağlantılar",
+            "footer.programs": "Programlar",
+            "footer.contact": "İletişim Bilgileri",
+            "footer.rights": "Tüm hakları saklıdır."
+        }
+    };
+
+    // ===== JAVASCRIPT =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // ===== VARIABLES =====
+        const body = document.body;
+        const header = document.getElementById('header');
+        const navbar = document.querySelector('.navbar');
+        const navMenu = document.querySelector('.nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const themeToggle = document.getElementById('themeToggle');
+        const langToggle = document.getElementById('langToggle');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const statNumbers = document.querySelectorAll('[data-count]');
+        const progressBars = document.querySelectorAll('.stat-progress-bar');
+        const sliderContainer = document.getElementById('sliderContainer');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        const calorieCalculator = document.getElementById('calorieCalculator');
+        const calculatorResult = document.getElementById('calculatorResult');
+        const resultValue = document.getElementById('resultValue');
+        const blogCards = document.querySelectorAll('.blog-card');
+        const blogModals = document.querySelectorAll('.blog-modal');
+        const closeModals = document.querySelectorAll('.close-modal');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const contactForm = document.getElementById('contactForm');
+
+        // ===== THEME TOGGLE =====
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'light') {
+                icon.className = 'fas fa-moon';
+            } else {
+                icon.className = 'fas fa-sun';
+            }
+        }
+
+        // ===== LANGUAGE TOGGLE =====
+        // Check for saved language preference or default to 'en'
+        let currentLang = localStorage.getItem('language') || 'en';
+        updateLanguage(currentLang);
+
+        langToggle.addEventListener('click', function() {
+            currentLang = currentLang === 'en' ? 'tr' : 'en';
+            updateLanguage(currentLang);
+            localStorage.setItem('language', currentLang);
+        });
+
+        function updateLanguage(lang) {
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update language toggle button text
+            langToggle.querySelector('span').textContent = lang.toUpperCase();
+        }
+
+        // ===== MOBILE MENU TOGGLE =====
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a nav link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // ===== STICKY HEADER =====
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Show/hide scroll to top button
+            if (window.scrollY > 500) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+
+            // Active nav link based on scroll position
+            updateActiveNavLink();
+        });
+
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== ACTIVE NAV LINK =====
+        function updateActiveNavLink() {
+            const scrollPosition = window.scrollY + 100;
+
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // ===== SCROLL TO TOP =====
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ===== ANIMATE ON SCROLL =====
+        function checkScroll() {
+            animateElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animated');
+                }
+            });
+
+            // Animate counter numbers
+            statNumbers.forEach(stat => {
+                const elementTop = stat.getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < window.innerHeight - elementVisible && !stat.classList.contains('animated')) {
+                    animateCounter(stat);
+                    stat.classList.add('animated');
+                }
+            });
+
+            // Animate progress bars
+            progressBars.forEach(bar => {
+                const elementTop = bar.getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < window.innerHeight - elementVisible && !bar.classList.contains('animated')) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                    bar.classList.add('animated');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        // Initial check in case elements are already in view
+        checkScroll();
+
+        // ===== ANIMATE COUNTERS =====
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // ===== TRANSFORMATIONS SLIDER =====
+        let currentSlide = 0;
+        const slideCount = document.querySelectorAll('.slide').length;
+
+        function showSlide(index) {
+            if (index < 0) {
+                currentSlide = slideCount - 1;
+            } else if (index >= slideCount) {
+                currentSlide = 0;
+            } else {
+                currentSlide = index;
+            }
+
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update dots
+            sliderDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Add click events to dots
+        sliderDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                showSlide(i);
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // ===== CALORIE CALCULATOR =====
+        calorieCalculator.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const weight = parseInt(document.getElementById('weight').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+            const goal = document.getElementById('goal').value;
+
+            // Calculate BMR (Basal Metabolic Rate)
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            // Calculate TDEE (Total Daily Energy Expenditure)
+            let tdee = bmr * activity;
+
+            // Adjust based on goal
+            let calorieNeeds;
+            if (goal === 'lose') {
+                calorieNeeds = tdee - 500; // 500 calorie deficit for weight loss
+            } else if (goal === 'gain') {
+                calorieNeeds = tdee + 500; // 500 calorie surplus for weight gain
+            } else {
+                calorieNeeds = tdee; // Maintenance
+            }
+
+            // Display result
+            resultValue.textContent = Math.round(calorieNeeds);
+            calculatorResult.style.display = 'block';
+
+            // Scroll to result
+            calculatorResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // ===== BLOG MODALS =====
+        blogCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const blogId = this.getAttribute('data-blog');
+                const modal = document.getElementById(`blogModal${blogId}`);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            });
+        });
+
+        closeModals.forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                const modal = this.closest('.blog-modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        });
+
+        // Close modal when clicking outside content
+        blogModals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        });
+
+        // ===== FAQ ACCORDION =====
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', function() {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // ===== CONTACT FORM =====
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Basic form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !subject || !message) {
+                alert(currentLang === 'en'
+                    ? 'Please fill in all fields.'
+                    : 'Lütfen tüm alanları doldurun.');
+                return;
+            }
+
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert(currentLang === 'en'
+                    ? 'Please enter a valid email address.'
+                    : 'Lütfen geçerli bir e-posta adresi girin.');
+                return;
+            }
+
+            // In a real application, you would send the form data to a server here
+            // For this example, we'll just show a success message
+            alert(currentLang === 'en'
+                ? 'Thank you for your message! We will get back to you soon.'
+                : 'Mesajınız için teşekkürler! En kısa sürede size dönüş yapacağız.');
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // ===== INITIALIZE =====
+        // Run once on page load
+        updateActiveNavLink();
+        checkScroll();
+    });
+</script>
+</body>
+</html>
